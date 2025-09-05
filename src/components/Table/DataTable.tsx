@@ -1,16 +1,21 @@
 import { useState } from 'react'
+import "./DataTable.scss";
+
+import createMatrix from '../../util/createMatrix';
 
 export default function DataTable() {
+  const n = 10;
+  const m = 10;
 
-  const [dataMatrix, setDataMatrix] = useState([
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-    ]);
+  const [dataMatrix, setDataMatrix] = useState(createMatrix(n,m));
+
+
+  
 
   return (
     <>
-      {dataMatrix.map((row, rowIndex) => (
+      <div className="grid-container">
+        {dataMatrix.map((row, rowIndex) => (
         <div key={rowIndex} className="grid-row">
           {
             row.map((cell,cellIndex) => (
@@ -21,6 +26,7 @@ export default function DataTable() {
           }
         </div>
       ))}
+      </div>
     </>
   )
 }
