@@ -1,29 +1,42 @@
-import { useState } from 'react'
 import "./DataTable.scss";
 
-import createMatrix from '../../util/createMatrix';
+import { useState } from 'react'
+import { useContext } from 'react';
+import { DataContext } from '../../App';
+
 
 export default function DataTable() {
-  const n = 10;
-  const m = 10;
 
-  const [dataMatrix, setDataMatrix] = useState(createMatrix(n,m));
-
-
-  
+  const {data, actions} = useContext(DataContext);
 
   return (
     <>
       <div className="grid-container">
-        {dataMatrix.map((row, rowIndex) => (
+        {data.map((row, rowIndex) => (
         <div key={rowIndex} className="grid-row">
+          <div
+            key={`remove${rowIndex}`}
+            className="grid-cell remove-cell"
+            onClick={() => actions.removeRow(rowIndex)}
+          ></div>
           {
             row.map((cell,cellIndex) => (
-              <div key={cellIndex} className="grid-cell">
-                {cell}
+              <div
+                key={cell.id} 
+                className="grid-cell"
+                onClick={() => actions.incrementCell(rowIndex, cellIndex)}
+              >
+                {cell.value}
               </div>
             ))
           }
+          <div
+            key={`sum${rowIndex}`}
+            className="grid-cell sum-cell">{
+              row.reduce((acc, currentValue) => {
+                return acc + currentValue.value
+              }, 0)
+            }</div>
         </div>
       ))}
       </div>

@@ -6,4 +6,14 @@ type Cell = {
   value: CellValue,
 }
 
-export type { Cell };
+type Context = {
+  data: Cell[][],
+  actions: {
+    incrementCell: Function,
+    setMatrix: Function,
+    addRow: Function,
+    removeRow: Function,
+  }
+}
+
+export type { Cell, Context };

@@ -1,0 +1,45 @@
+.control-container {
+  display: flex;
+  padding:10px;
+  border-radius: 10px;
+  gap: 10px;
+  justify-content: space-between;
+
+  background-color: grey;
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+  }
+
+  .input-container , .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  input[type=number] {
+    -moz-appearance:textfield; 
+  }
+
+  .input {
+    border-radius: 5px;
+    width: 100px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+
+    border-radius: 5px;
+    background-color: #4d4d4d;
+
+    cursor: pointer;
+
+  }
+}

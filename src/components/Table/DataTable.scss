@@ -1,20 +1,50 @@
 .grid-container {
-  max-width: 75vh;
-  max-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid black;
+  border-radius: 15px;
+  width: 75vh;
+  height: 75vh;
+  justify-content: center;
+  align-items: center;
+  // transform: translateX(55px);
 
   overflow: scroll;
 
   .grid-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     .grid-cell {
+      width: 55px;
+      height: 55px;
       border: 1px solid black;
-      padding: 15px;
-      flex: 1;
+      // flex: 1 0;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .sum-cell {
+      border-color: gray;
+    }
+
+    .remove-cell {
+      background-image: url('../../assets/icons/remove_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    .percentile-cell {
+      background-color: grey;
     }
   }
 }
