@@ -75,7 +75,7 @@ export default function DataTable() {
             handleScrollVertical(event);
           }}
         >
-          {data.map((row, rowIndex) => (
+          {data.map((_row, rowIndex) => (
             <div
               key={`remove${rowIndex}`}
               className="grid-cell remove-cell"
