@@ -1,65 +1,101 @@
-.grid-container {
+.table-container {
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
-  width: 75vh;
-  height: 75vh;
-  justify-content: center;
-  overflow: auto;
 
-  padding:10px;
+  .main-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .matrix-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 75vh;
+      max-height: 75vh;
+      // justify-content: center;
+      overflow: auto;
+
+      // padding: 10px;
+    }
+  }
+
+  .secondary-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .delete-container,
+  .sum-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 75vh;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .percentage-container {
+    max-width: 75vh;
+    overflow: auto;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   .grid-row {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+  }
 
+  .grid-cell {
+    width: 55px;
+    height: 55px;
+    border: 1px solid black;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 
-    .grid-cell {
-      width: 55px;
-      height: 55px;
-      border: 1px solid black;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
+    position: relative;
 
-      position: relative;
+    cursor: pointer;
+    user-select: none;
 
-      cursor: pointer;
-      user-select: none;
-
-      .cell-background {
-        top: 0;
-        left: 0;
-        font-size: 10px;
-        color: darkgray;
-        position: absolute;
-      }
+    .cell-background {
+      top: 0;
+      left: 0;
+      font-size: 10px;
+      color: darkgray;
+      position: absolute;
     }
+  }
 
-    .highlighted {
-      background-color: darkslategrey;
-    }
+  .highlighted {
+    background-color: darkslategrey;
+  }
 
-    .sum-cell {
-      border-color: gray;
-    }
+  .sum-cell {
+    border-color: gray;
+  }
 
-    .remove-cell {
-      background-image: url('../../assets/icons/remove_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-      border-color: red;
-    }
+  .remove-cell {
+    background-image: url("../../assets/icons/remove_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: red;
+  }
 
-    .percentile-cell {
-      border-color: grey;
-
-      &:first-child, &:last-child{
-        opacity: 0;
-      }
-    }
+  .percentile-cell {
+    border-color: grey;
   }
 }

@@ -93,3 +93,20 @@ export function findNearestCells(
     .slice(0, numberOfNearest)
     .map((cell) => cell.cell.id);
 }
+
+export function calculatePercentagesFromHighest(matrix: Cell[][]): string[][] {
+  let result = [] as string[][];
+
+  for (let i = 0; i < matrix.length; i++) {
+    const rowCopy = [...matrix[i]];
+    result[i] = [];
+    const highestNumber = rowCopy.sort((a, b) => b.value - a.value)[0].value;
+
+    for (const cell of matrix[i]) {
+      const percentage = ((cell.value / highestNumber) * 100).toFixed(1) + "%";
+      result[i].push(percentage);
+    }
+  }
+
+  return result;
+}
