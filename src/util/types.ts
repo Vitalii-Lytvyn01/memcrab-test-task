@@ -8,6 +8,7 @@ type Cell = {
 
 type Context = {
   data: Cell[][],
+  numberOfNearest: number,
   actions: {
     incrementCell: Function,
     setMatrix: Function,

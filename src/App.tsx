@@ -1,7 +1,7 @@
 import './App.scss'
 import { createContext, useState } from 'react'
 
-import { createMatrix } from './util/utilFunc';
+import { calculateXLimit, createMatrix } from './util/utilFunc';
 import type { Context } from './util/types';
 
 import InputContainer from './components/InputContainer/InputContainer';
@@ -19,12 +19,19 @@ function App() {
   }
 
   function setMatrix(rows: number, cols: number) {
+    if((rows > 100 || rows < 0) || (cols > 100 || cols < 0)) {
+      alert("The number of columns and rows should be between 0 and 100");
+      return;
+    }
     setDataMatrix(createMatrix(rows,cols));
-
-    console.log('setMarix');
   }
 
   function addRow() {
+    if(dataMatrix.length === 100) {
+      alert("Matrix is at maximum number of rows: 100");
+      return;
+    }
+
     let newRow = []
     for (let i = 0; i < dataMatrix[0].length; i++) {
       newRow[i] = {
@@ -38,7 +45,7 @@ function App() {
     setDataMatrix(matrixClone);
   }
 
-  function removeRow(row:number ) {
+  function removeRow(row:number) {
     let matrixClone = structuredClone(dataMatrix);
     matrixClone.splice(row, 1);
     setDataMatrix(matrixClone);
@@ -46,7 +53,8 @@ function App() {
 
   return (
     <DataContext value={{
-      data: dataMatrix, 
+      data: dataMatrix,
+      numberOfNearest: calculateXLimit(dataMatrix.length, dataMatrix[0].length),
       actions: {
         incrementCell,
         setMatrix,
